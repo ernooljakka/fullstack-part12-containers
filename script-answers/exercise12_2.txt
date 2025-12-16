@@ -1,0 +1,16 @@
+ernoo@ERNO:~$ mkdir -p script-answers
+ernoo@ERNO:~$ script script-answers/exercise12_2.txt
+Script started, output log file is 'script-answers/exercise12_2.txt'.
+ernoo@ERNO:~$ docker run -it ubuntu bash
+root@2e5c36426514:/# mkdir -p /usr/src/app
+root@2e5c36426514:/# echo 'console.log("Hello from container!");' > /usr/src/app/index.js
+root@2e5c36426514:/# exit
+exit
+ernoo@ERNO:~$ exit
+exit
+Script done.
+ernoo@ERNO:~$
+
+
+
+My scripts file looks pretty weird so I just pasted the commands.

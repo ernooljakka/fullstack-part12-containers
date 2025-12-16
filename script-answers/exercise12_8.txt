@@ -1,0 +1,66 @@
+ernoo@ERNO:~/fso-containers/todo-app/todo-backend$ docker compose -f docker-compose.dev.yml exec mongo bash
+root@0dbae06694e0:/# mongosh -u root -p example --authenticationDatabase admin
+test> use the_database
+switched to db the_database
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('693c1747d0cec580339dc29d'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('693c1747d0cec580339dc29e'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('693c1a63f55a2c06abb20171'),
+    text: 'New task',
+    done: false,
+    __v: 0
+  }
+]
+the_database> db.todos.insertOne({
+...   text: "Increase the number of tools in my tool belt",
+...   done: false
+... })
+{
+  acknowledged: true,
+  insertedId: ObjectId('693c1b8eadbb4557bc9dc29d')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('693c1747d0cec580339dc29d'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('693c1747d0cec580339dc29e'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('693c1a63f55a2c06abb20171'),
+    text: 'New task',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('693c1b8eadbb4557bc9dc29d'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+the_database> exit
+root@0dbae06694e0:/# exit
+exit
+ernoo@ERNO:~/fso-containers/todo-app/todo-backend$ exit
+exit
+Script done.
+ernoo@ERNO:~/fso-containers$
+
+script command saves my commands with all kinds of characters and looks unreadable and I can't find a way to fix it. Hope this is sufficient enough

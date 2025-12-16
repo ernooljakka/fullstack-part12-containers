@@ -1,0 +1,6 @@
+services:
+  app:                    # Service name, can be anything
+    build: .              # Build image from current folder
+    image: express-server # Optional: name the image
+    ports:                # Map host port to container port
+      - "3000:3000"

@@ -1,0 +1,7 @@
+ernoo@ERNO:~$ docker start -i nervous_bohr
+root@2e5c36426514:/# nano /usr/src/app/index.js
+root@2e5c36426514:/# nano /usr/src/app/index.js
+root@2e5c36426514:/#
+*Add the file to index.js*
+*Exit Nano*
+

@@ -1,0 +1,12 @@
+root@2e5c36426514:/# apt update
+*install stuff*
+root@2e5c36426514:/# apt install -y curl
+*install stuff*
+root@2e5c36426514:/# curl -sL https://deb.nodesource.com/setup_20.x | bash
+*install stuff*
+apt install -y nodejs
+*install stuff*
+node /usr/src/app/index.js
+Hello from container!
+Hello World
+root@2e5c36426514:/#
