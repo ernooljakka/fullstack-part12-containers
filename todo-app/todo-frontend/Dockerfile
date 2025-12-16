@@ -1,43 +1,14 @@
-# Stage 1: Test stage
-FROM node:20 AS test
-WORKDIR /app
+FROM node:20 as build-stage 
 
-# Copy package files
-COPY package.json package-lock.json ./
+WORKDIR /usr/src/app
 
-# Install all dependencies (including dev dependencies for testing)
-RUN npm install
-
-# Copy source code
 COPY . .
 
-# Run tests
-RUN npm test
+ENV VITE_BACKEND_URL=http://localhost:8080/api
 
-# Stage 2: Build stage (production)
-FROM node:20 AS build
-WORKDIR /app
-
-# Copy package files
-COPY package.json package-lock.json ./
-
-# Install production dependencies
-RUN npm install --omit=dev
-
-# Copy source code
-COPY . .
-
-# Set backend URL
-ENV VITE_BACKEND_URL=http://localhost:3000
-
-# Build the frontend
 RUN npm run build
 
-# Install serve globally
-RUN npm install -g serve
+FROM nginx:1.25-alpine
 
-# Expose port
-EXPOSE 4173
+COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html
 
-# Command to serve frontend
-CMD ["serve", "-s", "dist", "-l", "4173"]
