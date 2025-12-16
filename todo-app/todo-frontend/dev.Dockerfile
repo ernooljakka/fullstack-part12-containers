@@ -1,13 +1,14 @@
 FROM node:20
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
 
-ENV VITE_BACKEND_URL=http://backend:3000
+ENV VITE_BACKEND_URL=/api
+
 EXPOSE 5173
 
 CMD ["npm", "run", "dev"]
